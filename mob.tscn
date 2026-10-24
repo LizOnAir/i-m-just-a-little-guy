@@ -1,0 +1,48 @@
+[gd_scene format=3 uid="uid://drdh3p443ls0y"]
+
+[ext_resource type="Script" uid="uid://732x57qtdjbe" path="res://mob.gd" id="1_p11y5"]
+[ext_resource type="Texture2D" uid="uid://cuyoolchp1jqi" path="res://Enemy/Untitled12_20261023154807.PNG" id="2_s5nov"]
+[ext_resource type="Texture2D" uid="uid://b8364uj5fhouv" path="res://Enemy/Untitled12_20261023154817.PNG" id="3_b3mxk"]
+[ext_resource type="Texture2D" uid="uid://1thnucpf3bsw" path="res://Enemy/Untitled12_20261023155113.PNG" id="4_1qmh0"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_nvm7t"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_s5nov")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_b3mxk")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_1qmh0")
+}],
+"loop": 1,
+"name": &"move",
+"speed": 5.0
+}]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6yav2"]
+size = Vector2(37, 32.5)
+
+[node name="Mob" type="RigidBody2D" unique_id=696012263]
+collision_mask = 0
+gravity_scale = 0.0
+script = ExtResource("1_p11y5")
+metadata/_edit_group_ = true
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=999154441]
+rotation = 1.5707964
+scale = Vector2(0.06, 0.06)
+sprite_frames = SubResource("SpriteFrames_nvm7t")
+animation = &"move"
+frame_progress = 0.0054596597
+speed_scale = 2.0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=487423111]
+position = Vector2(9.5, -6.25)
+shape = SubResource("RectangleShape2D_6yav2")
+
+[node name="VisibleOnScreenEnabler2D" type="VisibleOnScreenEnabler2D" parent="." unique_id=595878875]
+scale = Vector2(0.06, 0.06)
+enable_node_path = NodePath("../AnimatedSprite2D")
